@@ -2,8 +2,8 @@
 
 set ver=1.8.0
 set local=%CD%
-set x64=%local%\%ver%\x64
-set x86=%local%\%ver%\x86
+set x64=%local%\openh264_%ver%\x64
+set x86=%local%\openh264_%ver%\x86
 
 cd /d %appdata%\Mozilla\Firefox\Profiles\*.default-release*\ > nul 2>&1
 if errorlevel 1 cd /d %appdata%\Mozilla\Firefox\Profiles\*.default\ > nul 2>&1
