@@ -5,20 +5,18 @@ set local=%CD%
 set x64=%local%\%ver%\x64
 set x86=%local%\%ver%\x86
 
-cd %appdata%\Mozilla\Firefox\Profiles\*.default\
-mkdir gmp-gmpopenh264\%ver%
+cd /d %appdata%\Mozilla\Firefox\Profiles\*.default-release*\ > nul 2>&1
+if errorlevel 1 cd /d %appdata%\Mozilla\Firefox\Profiles\*.default\ > nul 2>&1
+
+mkdir gmp-gmpopenh264\%ver% > nul 2>&1
 
 if exist "%ProgramFiles(x86)%" (
-	copy %x64%\gmpopenh264.dll .\gmp-gmpopenh264\%ver%\
-	copy %x64%\ .\gmp-gmpopenh264\%ver%\
+	copy %x64%\gmpopenh264.dll .\gmp-gmpopenh264\%ver%\ > nul 2>&1
+	copy %x64%\ .\gmp-gmpopenh264\%ver%\ > nul 2>&1
 ) else (
-	copy %x86%\gmpopenh264.dll .\gmp-gmpopenh264\%ver%\
-	copy %x64%\ .\gmp-gmpopenh264\%ver%\
+	copy %x86%\gmpopenh264.dll .\gmp-gmpopenh264\%ver%\ > nul 2>&1
+	copy %x86%\ .\gmp-gmpopenh264\%ver%\ > nul 2>&1
 )
 
-cd %appdata%\Mozilla\Firefox\Profiles\*.default-release*\
-echo %CD%
-
-echo user_pref("media.gmp-gmpopenh264.version", "%ver%") >> prefs.js
-
-echo done.
+echo user_pref("media.gmp-gmpopenh264.lastUpdate", 1578389816); >> prefs.js
+echo user_pref("media.gmp-gmpopenh264.version", "%ver%"); >> prefs.js
